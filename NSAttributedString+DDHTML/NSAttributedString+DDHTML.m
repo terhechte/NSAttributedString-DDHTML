@@ -31,26 +31,100 @@
 #import "NSAttributedString+DDHTML.h"
 #include <libxml/HTMLparser.h>
 
+#if TARGET_OS_MAC
+
+NSString *const FontTextStyleTitle1 = @"NSFontTextStyleTitle1";
+NSString *const FontTextStyleTitle2 = @"NSFontTextStyleTitle2";
+NSString *const FontTextStyleTitle3 = @"NSFontTextStyleTitle3";
+NSString *const FontTextStyleHeadline = @"NSFontTextStyleHeadline";
+NSString *const FontTextStyleSubheadline = @"NSFontTextStyleSubheadline";
+NSString *const FontTextStyleBody = @"NSFontTextStyleBody";
+NSString *const FontTextStyleFootnote = @"NSFontTextStyleFootnote";
+NSString *const FontTextStyleCaption1 = @"NSFontTextStyleCaption1";
+NSString *const FontTextStyleCaption2 = @"NSFontTextStyleCaption2";
+NSString *const FontTextStyleCallout = @"NSFontTextStyleCallout";
+
+NSString *const FontSizeKey = @"size";
+NSString *const FontTraitKey = @"traits";
+
+@interface NSFont(UIKitExtensions)
++ (NSFont*) italicSystemFontOfSize:(CGFloat)size;
+@end
+
+@implementation NSFont(UIKitExtensions)
+/*
+    NSItalicFontMask			= 0x00000001,
+    NSBoldFontMask			= 0x00000002,
+    NSUnboldFontMask			= 0x00000004,
+    NSNonStandardCharacterSetFontMask	= 0x00000008,
+    NSNarrowFontMask			= 0x00000010,
+    NSExpandedFontMask			= 0x00000020,
+    NSCondensedFontMask			= 0x00000040,
+    NSSmallCapsFontMask			= 0x00000080,
+    NSPosterFontMask			= 0x00000100,
+    NSCompressedFontMask		= 0x00000200,
+    NSFixedPitchFontMask		= 0x00000400,
+    NSUnitalicFontMask			= 0x01000000
+ */
+
++ (NSDictionary*) textStyles {
+    NSMutableDictionary *styles = @{}.mutableCopy;
+    styles[@"NSFontTextStyleTitle1"] = @{FontSizeKey: @(18.0), FontTraitKey: @(NSBoldFontMask)};
+    styles[@"NSFontTextStyleTitle2"] = @{FontSizeKey: @(16.0), FontTraitKey: @(NSBoldFontMask)};
+    styles[@"NSFontTextStyleTitle3"] = @{FontSizeKey: @(15.0), FontTraitKey: @(NSBoldFontMask)};
+    styles[@"NSFontTextStyleHeadline"] = @{FontSizeKey: @(14.0), FontTraitKey: @(NSBoldFontMask)};
+    styles[@"NSFontTextStyleSubheadline"] = @{FontSizeKey: @(13.0), FontTraitKey: @(NSBoldFontMask)};
+    styles[@"NSFontTextStyleBody"] = @{FontSizeKey: @(12.0)};
+    styles[@"NSFontTextStyleFootnote"] = @{FontSizeKey: @(9.0), FontTraitKey: @(NSItalicFontMask)};
+    styles[@"NSFontTextStyleCaption1"] = @{FontSizeKey: @(11.0)};
+    styles[@"NSFontTextStyleCaption2"] = @{FontSizeKey: @(10.0)};
+    styles[@"NSFontTextStyleCallout"] = @{FontSizeKey: @(10.0)};
+    return styles.copy;
+}
+
++ (NSFont*) italicSystemFontOfSize:(CGFloat)size {
+    return [self systemFontWithSize:size traits:NSItalicFontMask weight:0];
+}
+
++ (NSFont*) systemFontWithSize:(CGFloat)size traits:(NSUInteger)traits weight:(NSInteger)weight {
+    NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    return [fontManager fontWithFamily:[NSFont systemFontOfSize:size].familyName
+                                traits:traits
+                                weight:weight
+                                  size:size];
+}
+
+
++ (NSFont*) preferredFontForTextStyle:(NSString*)style {
+    NSDictionary *attributes = [self textStyles][style];
+    CGFloat size = [(NSNumber*)attributes[FontSizeKey] floatValue];
+    NSUInteger traits = [(NSNumber*)attributes[FontTraitKey] integerValue];
+    return [self systemFontWithSize:size traits:traits weight:0];
+}
+
+@end
+#endif
+
 @implementation NSAttributedString (DDHTML)
 
 + (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString
 {
-    UIFont *preferredBodyFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    Font *preferredBodyFont = [Font preferredFontForTextStyle:FontTextStyleBody];
     
     return [self attributedStringFromHTML:htmlString
                                normalFont:preferredBodyFont
-                                 boldFont:[UIFont boldSystemFontOfSize:preferredBodyFont.pointSize]
-                               italicFont:[UIFont italicSystemFontOfSize:preferredBodyFont.pointSize]];
+                                 boldFont:[Font boldSystemFontOfSize:preferredBodyFont.pointSize]
+                               italicFont:[Font italicSystemFontOfSize:preferredBodyFont.pointSize]];
 }
 
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(Font *)boldFont italicFont:(Font *)italicFont
 {
     return [self attributedStringFromHTML:htmlString
-                               normalFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                               normalFont:[Font preferredFontForTextStyle:FontTextStyleBody]
                                  boldFont:boldFont
                                italicFont:italicFont];
 }
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont
 {
     return [self attributedStringFromHTML:htmlString
                                normalFont:normalFont
@@ -59,7 +133,7 @@
                                  imageMap:@{}];
 }
 
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSDictionary<NSString *, UIImage *> *)imageMap
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont imageMap:(NSDictionary<NSString *, Image *> *)imageMap
 {
     // Parse HTML string as XML document using UTF-8 encoding
     NSData *documentData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
@@ -84,7 +158,7 @@
     return finalAttributedString;
 }
 
-+ (NSAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSDictionary<NSString *, UIImage *> *)imageMap
++ (NSAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont imageMap:(NSDictionary<NSString *, Image *> *)imageMap
 {
     NSMutableAttributedString *nodeAttributedString = [[NSMutableAttributedString alloc] init];
     
@@ -151,7 +225,7 @@
         
         // Stoke Tag
         else if (strncmp("stroke", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
-            UIColor *strokeColor = [UIColor purpleColor];
+            Color *strokeColor = [Color purpleColor];
             NSNumber *strokeWidth = @(1.0);
             
             if (attributeDictionary[@"color"]) {
@@ -174,7 +248,7 @@
                 NSShadow *shadow = [[NSShadow alloc] init];
                 shadow.shadowOffset = CGSizeMake(0, 0);
                 shadow.shadowBlurRadius = 2.0;
-                shadow.shadowColor = [UIColor blackColor];
+                shadow.shadowColor = [Color blackColor];
                 
                 if (attributeDictionary[@"offset"]) {
                     shadow.shadowOffset = CGSizeFromString(attributeDictionary[@"offset"]);
@@ -194,8 +268,8 @@
         else if (strncmp("font", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
             NSString *fontName = nil;
             NSNumber *fontSize = nil;
-            UIColor *foregroundColor = nil;
-            UIColor *backgroundColor = nil;
+            Color *foregroundColor = nil;
+            Color *backgroundColor = nil;
             
             if (attributeDictionary[@"face"]) {
                 fontName = attributeDictionary[@"face"];
@@ -211,7 +285,7 @@
             }
     
             if (fontName == nil && fontSize != nil) {
-                [nodeAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:[fontSize doubleValue]] range:nodeAttributedStringRange];
+                [nodeAttributedString addAttribute:NSFontAttributeName value:[Font systemFontOfSize:[fontSize doubleValue]] range:nodeAttributedStringRange];
             }
             else if (fontName != nil && fontSize == nil) {
                 [nodeAttributedString addAttribute:NSFontAttributeName value:[self fontOrSystemFontForName:fontName size:12.0] range:nodeAttributedStringRange];
@@ -334,9 +408,9 @@
                 NSString *height = attributeDictionary[@"height"];
         
                 if (src != nil) {
-                    UIImage *image = imageMap[src];
+                    Image *image = imageMap[src];
                     if (image == nil) {
-                        image = [UIImage imageNamed:src];
+                        image = [Image imageNamed:src];
                     }
                     
                     if (image != nil) {
@@ -356,15 +430,15 @@
     return nodeAttributedString;
 }
 
-+ (UIFont *)fontOrSystemFontForName:(NSString *)fontName size:(CGFloat)fontSize {
-    UIFont * font = [UIFont fontWithName:fontName size:fontSize];
++ (Font *)fontOrSystemFontForName:(NSString *)fontName size:(CGFloat)fontSize {
+    Font * font = [Font fontWithName:fontName size:fontSize];
     if(font) {
         return font;
     }
-    return [UIFont systemFontOfSize:fontSize];
+    return [Font systemFontOfSize:fontSize];
 }
 
-+ (UIColor *)colorFromHexString:(NSString *)hexString
++ (Color *)colorFromHexString:(NSString *)hexString
 {
     if (hexString == nil)
         return nil;
@@ -373,7 +447,7 @@
     char *p;
     NSUInteger hexValue = strtoul([hexString cStringUsingEncoding:NSUTF8StringEncoding], &p, 16);
 
-    return [UIColor colorWithRed:((hexValue & 0xff0000) >> 16) / 255.0 green:((hexValue & 0xff00) >> 8) / 255.0 blue:(hexValue & 0xff) / 255.0 alpha:1.0];
+    return [Color colorWithRed:((hexValue & 0xff0000) >> 16) / 255.0 green:((hexValue & 0xff00) >> 8) / 255.0 blue:(hexValue & 0xff) / 255.0 alpha:1.0];
 }
 
 @end

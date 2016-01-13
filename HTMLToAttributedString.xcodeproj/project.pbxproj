@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D4EA7BF1C464E2400B26AEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4EA7BE1C464E2400B26AEF /* AppDelegate.m */; };
+		4D4EA7C21C464E2400B26AEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4EA7C11C464E2400B26AEF /* main.m */; };
+		4D4EA7C41C464E2400B26AEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4EA7C31C464E2400B26AEF /* Assets.xcassets */; };
+		4D4EA7C71C464E2400B26AEF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4EA7C51C464E2400B26AEF /* MainMenu.xib */; };
+		4D4EA7D21C464E2400B26AEF /* HTMLtoStringMacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4EA7D11C464E2400B26AEF /* HTMLtoStringMacTests.m */; };
+		4D4EA7DA1C464E3500B26AEF /* NSAttributedString+DDHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA378A716701A280092D30F /* NSAttributedString+DDHTML.m */; };
+		4D4EA7DC1C46563700B26AEF /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4EA7DB1C46563700B26AEF /* libxml2.tbd */; };
 		AA9A4B81166FE7A80006F4EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9A4B80166FE7A80006F4EE /* UIKit.framework */; };
 		AA9A4B83166FE7A80006F4EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9A4B82166FE7A80006F4EE /* Foundation.framework */; };
 		AA9A4B85166FE7A80006F4EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9A4B84166FE7A80006F4EE /* CoreGraphics.framework */; };
@@ -23,7 +30,28 @@
 		D11933B11BD0883F00E34F3A /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = D11933B01BD0883F00E34F3A /* car.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4D4EA7CE1C464E2400B26AEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA9A4B73166FE7A80006F4EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D4EA7BA1C464E2400B26AEF;
+			remoteInfo = HTMLtoStringMac;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4D4EA7BB1C464E2400B26AEF /* HTMLtoStringMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTMLtoStringMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4EA7BD1C464E2400B26AEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D4EA7BE1C464E2400B26AEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4D4EA7C11C464E2400B26AEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D4EA7C31C464E2400B26AEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D4EA7C61C464E2400B26AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4D4EA7C81C464E2400B26AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D4EA7CD1C464E2400B26AEF /* HTMLtoStringMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTMLtoStringMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4EA7D11C464E2400B26AEF /* HTMLtoStringMacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLtoStringMacTests.m; sourceTree = "<group>"; };
+		4D4EA7D31C464E2400B26AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D4EA7DB1C46563700B26AEF /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/lib/libxml2.tbd; sourceTree = DEVELOPER_DIR; };
 		AA9A4B7C166FE7A80006F4EE /* HTMLToAttributedString.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTMLToAttributedString.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9A4B80166FE7A80006F4EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA9A4B82166FE7A80006F4EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +75,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D4EA7B81C464E2400B26AEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D4EA7DC1C46563700B26AEF /* libxml2.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D4EA7CA1C464E2400B26AEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9A4B79166FE7A80006F4EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,11 +104,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D4EA7BC1C464E2400B26AEF /* HTMLtoStringMac */ = {
+			isa = PBXGroup;
+			children = (
+				4D4EA7BD1C464E2400B26AEF /* AppDelegate.h */,
+				4D4EA7BE1C464E2400B26AEF /* AppDelegate.m */,
+				4D4EA7C31C464E2400B26AEF /* Assets.xcassets */,
+				4D4EA7C51C464E2400B26AEF /* MainMenu.xib */,
+				4D4EA7C81C464E2400B26AEF /* Info.plist */,
+				4D4EA7C01C464E2400B26AEF /* Supporting Files */,
+			);
+			path = HTMLtoStringMac;
+			sourceTree = "<group>";
+		};
+		4D4EA7C01C464E2400B26AEF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D4EA7C11C464E2400B26AEF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D4EA7D01C464E2400B26AEF /* HTMLtoStringMacTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D4EA7D11C464E2400B26AEF /* HTMLtoStringMacTests.m */,
+				4D4EA7D31C464E2400B26AEF /* Info.plist */,
+			);
+			path = HTMLtoStringMacTests;
+			sourceTree = "<group>";
+		};
 		AA9A4B71166FE7A80006F4EE = {
 			isa = PBXGroup;
 			children = (
 				AA9A4BA6166FF1AA0006F4EE /* libxml2.dylib */,
 				AA9A4B86166FE7A80006F4EE /* HTMLToAttributedString */,
+				4D4EA7BC1C464E2400B26AEF /* HTMLtoStringMac */,
+				4D4EA7D01C464E2400B26AEF /* HTMLtoStringMacTests */,
 				AA9A4B7F166FE7A80006F4EE /* Frameworks */,
 				AA9A4B7D166FE7A80006F4EE /* Products */,
 			);
@@ -75,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				AA9A4B7C166FE7A80006F4EE /* HTMLToAttributedString.app */,
+				4D4EA7BB1C464E2400B26AEF /* HTMLtoStringMac.app */,
+				4D4EA7CD1C464E2400B26AEF /* HTMLtoStringMacTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +159,7 @@
 		AA9A4B7F166FE7A80006F4EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D4EA7DB1C46563700B26AEF /* libxml2.tbd */,
 				AA9A4B80166FE7A80006F4EE /* UIKit.framework */,
 				AA9A4B82166FE7A80006F4EE /* Foundation.framework */,
 				AA9A4B84166FE7A80006F4EE /* CoreGraphics.framework */,
@@ -130,6 +208,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D4EA7BA1C464E2400B26AEF /* HTMLtoStringMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D4EA7D81C464E2400B26AEF /* Build configuration list for PBXNativeTarget "HTMLtoStringMac" */;
+			buildPhases = (
+				4D4EA7B71C464E2400B26AEF /* Sources */,
+				4D4EA7B81C464E2400B26AEF /* Frameworks */,
+				4D4EA7B91C464E2400B26AEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HTMLtoStringMac;
+			productName = HTMLtoStringMac;
+			productReference = 4D4EA7BB1C464E2400B26AEF /* HTMLtoStringMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4D4EA7CC1C464E2400B26AEF /* HTMLtoStringMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D4EA7D91C464E2400B26AEF /* Build configuration list for PBXNativeTarget "HTMLtoStringMacTests" */;
+			buildPhases = (
+				4D4EA7C91C464E2400B26AEF /* Sources */,
+				4D4EA7CA1C464E2400B26AEF /* Frameworks */,
+				4D4EA7CB1C464E2400B26AEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D4EA7CF1C464E2400B26AEF /* PBXTargetDependency */,
+			);
+			name = HTMLtoStringMacTests;
+			productName = HTMLtoStringMacTests;
+			productReference = 4D4EA7CD1C464E2400B26AEF /* HTMLtoStringMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AA9A4B7B166FE7A80006F4EE /* HTMLToAttributedString */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA9A4BA0166FE7A80006F4EE /* Build configuration list for PBXNativeTarget "HTMLToAttributedString" */;
@@ -155,6 +268,15 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Deloitte Digital";
+				TargetAttributes = {
+					4D4EA7BA1C464E2400B26AEF = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					4D4EA7CC1C464E2400B26AEF = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 4D4EA7BA1C464E2400B26AEF;
+					};
+				};
 			};
 			buildConfigurationList = AA9A4B76166FE7A80006F4EE /* Build configuration list for PBXProject "HTMLToAttributedString" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -162,6 +284,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = AA9A4B71166FE7A80006F4EE;
 			productRefGroup = AA9A4B7D166FE7A80006F4EE /* Products */;
@@ -169,11 +292,29 @@
 			projectRoot = "";
 			targets = (
 				AA9A4B7B166FE7A80006F4EE /* HTMLToAttributedString */,
+				4D4EA7BA1C464E2400B26AEF /* HTMLtoStringMac */,
+				4D4EA7CC1C464E2400B26AEF /* HTMLtoStringMacTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D4EA7B91C464E2400B26AEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D4EA7C41C464E2400B26AEF /* Assets.xcassets in Resources */,
+				4D4EA7C71C464E2400B26AEF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D4EA7CB1C464E2400B26AEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9A4B7A166FE7A80006F4EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,6 +331,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4D4EA7B71C464E2400B26AEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D4EA7DA1C464E3500B26AEF /* NSAttributedString+DDHTML.m in Sources */,
+				4D4EA7C21C464E2400B26AEF /* main.m in Sources */,
+				4D4EA7BF1C464E2400B26AEF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D4EA7C91C464E2400B26AEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D4EA7D21C464E2400B26AEF /* HTMLtoStringMacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9A4B78166FE7A80006F4EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,7 +362,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4D4EA7CF1C464E2400B26AEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D4EA7BA1C464E2400B26AEF /* HTMLtoStringMac */;
+			targetProxy = 4D4EA7CE1C464E2400B26AEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		4D4EA7C51C464E2400B26AEF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D4EA7C61C464E2400B26AEF /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		AA9A4B89166FE7A80006F4EE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -223,6 +398,142 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4D4EA7D41C464E2400B26AEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = HTMLtoStringMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.HTMLtoStringMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4D4EA7D51C464E2400B26AEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = HTMLtoStringMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.HTMLtoStringMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4D4EA7D61C464E2400B26AEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = HTMLtoStringMacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.HTMLtoStringMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTMLtoStringMac.app/Contents/MacOS/HTMLtoStringMac";
+			};
+			name = Debug;
+		};
+		4D4EA7D71C464E2400B26AEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = HTMLtoStringMacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.HTMLtoStringMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTMLtoStringMac.app/Contents/MacOS/HTMLtoStringMac";
+			};
+			name = Release;
+		};
 		AA9A4B9E166FE7A80006F4EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -308,6 +619,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D4EA7D81C464E2400B26AEF /* Build configuration list for PBXNativeTarget "HTMLtoStringMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D4EA7D41C464E2400B26AEF /* Debug */,
+				4D4EA7D51C464E2400B26AEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D4EA7D91C464E2400B26AEF /* Build configuration list for PBXNativeTarget "HTMLtoStringMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D4EA7D61C464E2400B26AEF /* Debug */,
+				4D4EA7D71C464E2400B26AEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		AA9A4B76166FE7A80006F4EE /* Build configuration list for PBXProject "HTMLToAttributedString" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

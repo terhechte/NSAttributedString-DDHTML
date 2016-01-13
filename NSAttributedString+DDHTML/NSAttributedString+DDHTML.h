@@ -29,7 +29,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_MAC
+#import <AppKit/AppKit.h>
+#define Font NSFont
+#define Image NSImage
+#define Color NSColor
+#else
 #import <UIKit/UIKit.h>
+#define Font UIFont
+#define Image UIImage
+#define Color UIColor
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -53,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(Font *)boldFont italicFont:(Font *)italicFont;
 
 /**
  *  Generates an attributed string from HTML.
@@ -65,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont;
 
 /**
  *  Generates an attributed string from HTML.
@@ -78,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSDictionary<NSString *, UIImage *> *)imageMap;
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont imageMap:(NSDictionary<NSString *, Image *> *)imageMap;
 
 @end
 
