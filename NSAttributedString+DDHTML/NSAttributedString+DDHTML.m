@@ -107,6 +107,16 @@ NSString *const FontTraitKey = @"traits";
 
 @implementation NSAttributedString (DDHTML)
 
+#if TARGET_OS_MAC
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString baseFontSize:(CGFloat)baseFontSize
+{
+    return [self attributedStringFromHTML:htmlString
+                               normalFont:[Font systemFontOfSize:baseFontSize]
+                                 boldFont:[Font boldSystemFontOfSize:baseFontSize]
+                               italicFont:[Font italicSystemFontOfSize:baseFontSize]];
+}
+#endif
+
 + (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString
 {
     Font *preferredBodyFont = [Font preferredFontForTextStyle:FontTextStyleBody];
@@ -143,11 +153,20 @@ NSString *const FontTraitKey = @"traits";
         return [[NSAttributedString alloc] initWithString:htmlString attributes:nil];
     }
     
+    NSDictionary *headerFonts =
+    @{@"h1": [NSFont boldSystemFontOfSize:normalFont.pointSize * 2.5],
+      @"h2": [NSFont boldSystemFontOfSize:normalFont.pointSize * 2.1],
+      @"h3": [NSFont boldSystemFontOfSize:normalFont.pointSize * 1.8],
+      @"h4": [NSFont boldSystemFontOfSize:normalFont.pointSize * 1.5],
+      @"h5": [NSFont boldSystemFontOfSize:normalFont.pointSize * 1.4],
+      @"h6": [NSFont boldSystemFontOfSize:normalFont.pointSize * 1.3],
+      @"h7": [NSFont boldSystemFontOfSize:normalFont.pointSize * 1.2]};
+    
     NSMutableAttributedString *finalAttributedString = [[NSMutableAttributedString alloc] init];
     
     xmlNodePtr currentNode = document->children;
     while (currentNode != NULL) {
-        NSAttributedString *childString = [self attributedStringFromNode:currentNode normalFont:normalFont boldFont:boldFont italicFont:italicFont imageMap:imageMap];
+        NSAttributedString *childString = [self attributedStringFromNode:currentNode normalFont:normalFont boldFont:boldFont italicFont:italicFont imageMap:imageMap headerFonts: headerFonts];
         [finalAttributedString appendAttributedString:childString];
         
         currentNode = currentNode->next;
@@ -158,7 +177,7 @@ NSString *const FontTraitKey = @"traits";
     return finalAttributedString;
 }
 
-+ (NSAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont imageMap:(NSDictionary<NSString *, Image *> *)imageMap
++ (NSAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(Font *)normalFont boldFont:(Font *)boldFont italicFont:(Font *)italicFont imageMap:(NSDictionary<NSString *, Image *> *)imageMap headerFonts:(NSDictionary<NSString*, Font*>*)headerFonts
 {
     NSMutableAttributedString *nodeAttributedString = [[NSMutableAttributedString alloc] init];
     
@@ -170,7 +189,7 @@ NSString *const FontTraitKey = @"traits";
     // Handle children
     xmlNodePtr currentNode = xmlNode->children;
     while (currentNode != NULL) {
-        NSAttributedString *childString = [self attributedStringFromNode:currentNode normalFont:normalFont boldFont:boldFont italicFont:italicFont imageMap:imageMap];
+        NSAttributedString *childString = [self attributedStringFromNode:currentNode normalFont:normalFont boldFont:boldFont italicFont:italicFont imageMap:imageMap headerFonts: headerFonts];
         [nodeAttributedString appendAttributedString:childString];
         
         currentNode = currentNode->next;
@@ -198,6 +217,17 @@ NSString *const FontTraitKey = @"traits";
             }
         }
         
+        // Header Tags
+        Font *headerFont = nil;
+        for (NSString *headerKey in headerFonts.allKeys) {
+            const char *cName = [headerKey cStringUsingEncoding:NSUTF8StringEncoding];
+            if (strncmp(cName, (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
+                if ((headerFont = headerFonts[headerKey])) {
+                    [nodeAttributedString addAttribute:NSFontAttributeName value:headerFont range:nodeAttributedStringRange];
+                }
+            }
+        }
+        
         // Bold Tag
         if (strncmp("b", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0 ||
             strncmp("strong", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
@@ -218,12 +248,12 @@ NSString *const FontTraitKey = @"traits";
             [nodeAttributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:nodeAttributedStringRange];
         }
         
-        // Stike Tag
+        // Strike Tag
         else if (strncmp("strike", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
             [nodeAttributedString addAttribute:NSStrikethroughStyleAttributeName value:@(YES) range:nodeAttributedStringRange];
         }
         
-        // Stoke Tag
+        // Stroke Tag
         else if (strncmp("stroke", (const char *)xmlNode->name, strlen((const char *)xmlNode->name)) == 0) {
             Color *strokeColor = [Color purpleColor];
             NSNumber *strokeWidth = @(1.0);
